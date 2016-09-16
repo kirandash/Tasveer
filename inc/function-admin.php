@@ -31,6 +31,7 @@ function tasveer_custom_settings() {
 	 
 	 // add_settings_field( $id, $title, $callback, $page, $section, $args );
 	 add_settings_field( 'tasveer-sidebar-name', 'Full Name', 'tasveer_sidebar_name', 'tasveer-theme-options', 'tasveer-sidebar-options' );
+	 add_settings_field( 'tasveer-user-description', 'User Description', 'tasveer_user_description', 'tasveer-theme-options', 'tasveer-sidebar-options' );
 	 add_settings_field( 'tasveer-twitter', 'Twitter Handler', 'tasveer_sidebar_twitter', 'tasveer-theme-options', 'tasveer-sidebar-options' );
 	 add_settings_field( 'tasveer-facebook', 'Facebook Username', 'tasveer_sidebar_facebook', 'tasveer-theme-options', 'tasveer-sidebar-options' );
 	 add_settings_field( 'tasveer-gplus', 'Google+ Username', 'tasveer_sidebar_gplus', 'tasveer-theme-options', 'tasveer-sidebar-options' );
@@ -46,6 +47,7 @@ function tasveer_custom_settings() {
 	 register_setting( 'tasveer-theme-settings-group', 'first_name' );
 	 register_setting( 'tasveer-theme-settings-group', 'middle_name' );
 	 register_setting( 'tasveer-theme-settings-group', 'last_name' );
+	 register_setting( 'tasveer-theme-settings-group', 'user_description' );
 	 register_setting( 'tasveer-theme-settings-group', 'twitter_handler', 'tasveer_sanitize_twitter_handler' );
 	 register_setting( 'tasveer-theme-settings-group', 'facebook_username', 'tasveer_sanitize_inputs' );
 	 register_setting( 'tasveer-theme-settings-group', 'gplus_username', 'tasveer_sanitize_inputs' );
@@ -69,6 +71,12 @@ function tasveer_sidebar_name() {
 	$lastName = esc_attr( get_option('last_name') );
 	
 	echo '<input type="text" name="first_name" value="'.$firstName.'" placeholder="First Name"> <input type="text" name="middle_name" value="'.$middleName.'" placeholder="Middle Name"> <input type="text" name="last_name" value="'.$lastName.'" placeholder="Last Name">';
+}
+
+function tasveer_user_description() {
+	$userDescription = esc_attr( get_option('user_description') );
+	
+	echo '<input type="text" name="user_description" placeholder="User Description" value="'.$userDescription.'">';
 }
 
 function tasveer_sidebar_twitter() {
