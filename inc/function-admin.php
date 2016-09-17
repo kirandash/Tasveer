@@ -17,7 +17,8 @@ function tasveer_add_admin_page() {
 	
 	// Generate Tasveer Admin Sub Pages
 	/*add_submenu_page( string $parent_slug, string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = '' )*/
-	add_submenu_page( 'tasveer-theme-options', 'Tasveer Theme Options', 'Tasveer Theme', 'manage_options', 'tasveer-theme-options', 'tasveer_create_page' );
+	add_submenu_page( 'tasveer-theme-options', 'Tasveer Sidebar Options', 'Tasveer Sidebar', 'manage_options', 'tasveer-theme-options', 'tasveer_create_page' );
+	add_submenu_page( 'tasveer-theme-options', 'Tasveer Theme Support', 'Theme Support', 'manage_options', 'tasveer-theme-support', 'tasveer_theme_support_page' );
 	add_submenu_page( 'tasveer-theme-options', 'Tasveer Custom CSS', 'Tasveer CSS', 'manage_options', 'tasveer-theme-css', 'tasveer_css_page' );
 	
 	// Activate custom settings
@@ -26,6 +27,7 @@ function tasveer_add_admin_page() {
 add_action( 'admin_menu', 'tasveer_add_admin_page' );
 
 function tasveer_custom_settings() {
+	 // Sidebar Settings
 	 // add_settings_section( $id, $title, $callback, $page );
 	 add_settings_section( 'tasveer-sidebar-section', 'Sidebar Options', 'tasveer_sidebar_options', 'tasveer-theme-options' );
 	 
@@ -60,6 +62,34 @@ function tasveer_custom_settings() {
 	 register_setting( 'tasveer-theme-settings-group', 'instagram_username', 'tasveer_sanitize_inputs' );
 	 register_setting( 'tasveer-theme-settings-group', 'flickr_username', 'tasveer_sanitize_inputs' );
 	 register_setting( 'tasveer-theme-settings-group', 'tumblr_username', 'tasveer_sanitize_inputs' );
+	 
+	 // Theme Support Settings
+	 add_settings_section( 'tasveer-theme-support-section', 'Theme Support Options', 'tasveer_theme_support_section', 'tasveer-theme-support' );
+	 
+	 add_settings_field( 'post-formats', 'Post Formats', 'tasveer_post_formats', 'tasveer-theme-support', 'tasveer-theme-support-section' );
+	 
+	 register_setting( 'tasveer-theme-support-group', 'post_formats', 'tasveer_post_formats_sanitize' );
+}
+
+// Theme Support Functions
+function tasveer_post_formats_sanitize( $input ) {
+	return $input;
+}
+
+function tasveer_theme_support_section() {
+	echo 'Activate and Deactivate specific theme options';
+}
+
+function tasveer_post_formats() {
+	$post_formats = get_option('post_formats');
+	
+	$formats = array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' );
+	$output = '';
+	foreach( $formats as $format ){
+		$checked = ( isset( $post_formats[$format] ) && $post_formats[$format] == 1 ? 'checked' : '' );
+		$output .= '<label><input type="checkbox" id="'.$format.'" name="post_formats['.$format.']" value="1" '.$checked.'>'.$format.'</label><br>';
+	}
+	echo $output;
 }
 
 // Sidebar Functions
@@ -161,6 +191,10 @@ function tasveer_sanitize_inputs( $input ) {
 function tasveer_create_page() {
 	// Generation of our admin page
 	require_once( get_template_directory() . '/inc/templates/tasveer-admin.php' );
+}
+
+function tasveer_theme_support_page() {
+	require_once( get_template_directory() . '/inc/templates/tasveer-theme-support.php' );
 }
 
 function tasveer_css_page() {
