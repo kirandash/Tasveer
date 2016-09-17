@@ -6,10 +6,16 @@ $middleName = esc_attr( get_option('middle_name') );
 $lastName = esc_attr( get_option('last_name') );
 $fullName = $firstName.' '.$middleName.' '.$lastName;
 $userDescription = esc_attr( get_option('user_description') );
+$profilePicture = esc_attr( get_option('profile_picture') );
 ?>
 <div class="tasveer-sidebar-preview">
 	<div class="tasveer-sidebar">
-    	<h1 class="tasveer-username"><?php print($fullName); ?></h1>
+    	<div class="profile-picture-container">
+        	<div class="profile-picture-preview" style="background-image: url('<?php print $profilePicture; ?>');">
+            	
+            </div>
+        </div>
+        <h1 class="tasveer-username"><?php print($fullName); ?></h1>
         <h2 class="tasveer-description"><?php print($userDescription); ?></h2>
     </div>
 </div>

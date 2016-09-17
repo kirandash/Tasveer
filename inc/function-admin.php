@@ -27,23 +27,25 @@ add_action( 'admin_menu', 'tasveer_add_admin_page' );
 
 function tasveer_custom_settings() {
 	 // add_settings_section( $id, $title, $callback, $page );
-	 add_settings_section( 'tasveer-sidebar-options', 'Sidebar Options', 'tasveer_sidebar_options', 'tasveer-theme-options' );
+	 add_settings_section( 'tasveer-sidebar-section', 'Sidebar Options', 'tasveer_sidebar_options', 'tasveer-theme-options' );
 	 
 	 // add_settings_field( $id, $title, $callback, $page, $section, $args );
-	 add_settings_field( 'tasveer-sidebar-name', 'Full Name', 'tasveer_sidebar_name', 'tasveer-theme-options', 'tasveer-sidebar-options' );
-	 add_settings_field( 'tasveer-user-description', 'User Description', 'tasveer_user_description', 'tasveer-theme-options', 'tasveer-sidebar-options' );
-	 add_settings_field( 'tasveer-twitter', 'Twitter Handler', 'tasveer_sidebar_twitter', 'tasveer-theme-options', 'tasveer-sidebar-options' );
-	 add_settings_field( 'tasveer-facebook', 'Facebook Username', 'tasveer_sidebar_facebook', 'tasveer-theme-options', 'tasveer-sidebar-options' );
-	 add_settings_field( 'tasveer-gplus', 'Google+ Username', 'tasveer_sidebar_gplus', 'tasveer-theme-options', 'tasveer-sidebar-options' );
-	 add_settings_field( 'tasveer-dribble', 'Dribble Username', 'tasveer_sidebar_dribble', 'tasveer-theme-options', 'tasveer-sidebar-options' );
-	 add_settings_field( 'tasveer-pinterest', 'Pinterest Username', 'tasveer_sidebar_pinterest', 'tasveer-theme-options', 'tasveer-sidebar-options' );
-	 add_settings_field( 'tasveer-youtube', 'YouTube Username', 'tasveer_sidebar_youtube', 'tasveer-theme-options', 'tasveer-sidebar-options' );
-	 add_settings_field( 'tasveer-linkedin', 'Linkedin Username', 'tasveer_sidebar_linkedin', 'tasveer-theme-options', 'tasveer-sidebar-options' );
-	 add_settings_field( 'tasveer-instagram', 'Instagram Username', 'tasveer_sidebar_instagram', 'tasveer-theme-options', 'tasveer-sidebar-options' );
-	 add_settings_field( 'tasveer-flickr', 'Flickr Username', 'tasveer_sidebar_flickr', 'tasveer-theme-options', 'tasveer-sidebar-options' );
-	 add_settings_field( 'tasveer-tumblr', 'Tumblr Username', 'tasveer_sidebar_tumblr', 'tasveer-theme-options', 'tasveer-sidebar-options' );
+	 add_settings_field( 'tasveer-profile-picture', 'Profile Picture', 'tasveer_profile_picture', 'tasveer-theme-options', 'tasveer-sidebar-section' );
+	 add_settings_field( 'tasveer-sidebar-name', 'Full Name', 'tasveer_sidebar_name', 'tasveer-theme-options', 'tasveer-sidebar-section' );
+	 add_settings_field( 'tasveer-user-description', 'User Description', 'tasveer_user_description', 'tasveer-theme-options', 'tasveer-sidebar-section' );
+	 add_settings_field( 'tasveer-twitter', 'Twitter Handler', 'tasveer_sidebar_twitter', 'tasveer-theme-options', 'tasveer-sidebar-section' );
+	 add_settings_field( 'tasveer-facebook', 'Facebook Username', 'tasveer_sidebar_facebook', 'tasveer-theme-options', 'tasveer-sidebar-section' );
+	 add_settings_field( 'tasveer-gplus', 'Google+ Username', 'tasveer_sidebar_gplus', 'tasveer-theme-options', 'tasveer-sidebar-section' );
+	 add_settings_field( 'tasveer-dribble', 'Dribble Username', 'tasveer_sidebar_dribble', 'tasveer-theme-options', 'tasveer-sidebar-section' );
+	 add_settings_field( 'tasveer-pinterest', 'Pinterest Username', 'tasveer_sidebar_pinterest', 'tasveer-theme-options', 'tasveer-sidebar-section' );
+	 add_settings_field( 'tasveer-youtube', 'YouTube Username', 'tasveer_sidebar_youtube', 'tasveer-theme-options', 'tasveer-sidebar-section' );
+	 add_settings_field( 'tasveer-linkedin', 'Linkedin Username', 'tasveer_sidebar_linkedin', 'tasveer-theme-options', 'tasveer-sidebar-section' );
+	 add_settings_field( 'tasveer-instagram', 'Instagram Username', 'tasveer_sidebar_instagram', 'tasveer-theme-options', 'tasveer-sidebar-section' );
+	 add_settings_field( 'tasveer-flickr', 'Flickr Username', 'tasveer_sidebar_flickr', 'tasveer-theme-options', 'tasveer-sidebar-section' );
+	 add_settings_field( 'tasveer-tumblr', 'Tumblr Username', 'tasveer_sidebar_tumblr', 'tasveer-theme-options', 'tasveer-sidebar-section' );
 	 
 	 // register_setting( $option_group, $option_name, $sanitize_callback );
+	 register_setting( 'tasveer-theme-settings-group', 'profile_picture' );
 	 register_setting( 'tasveer-theme-settings-group', 'first_name' );
 	 register_setting( 'tasveer-theme-settings-group', 'middle_name' );
 	 register_setting( 'tasveer-theme-settings-group', 'last_name' );
@@ -63,6 +65,12 @@ function tasveer_custom_settings() {
 // Sidebar Functions
 function tasveer_sidebar_options() {
 	echo 'Customize your sidebar information.';
+}
+
+function tasveer_profile_picture() {
+	$profilePicture = esc_attr( get_option('profile_picture') );
+	
+	echo '<input type="button" id="upload-button" value="Upload Profile Picture" class="button button-secondary"><input type="hidden" name="profile_picture" id="profile-picture" value="'.$profilePicture.'">';
 }
 
 function tasveer_sidebar_name() {
