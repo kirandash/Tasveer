@@ -37,4 +37,16 @@ jQuery(document).ready(function($) {
 			
 	});
 	
+	$('#remove-picture').on('click', function(e){
+		e.preventDefault();
+		var answer = confirm('Are you sure you want to delete your profile picture?');
+		if( answer == true ) {
+			$('#profile-picture').val('');
+			$('.tasveer-general-form').submit();
+		}else{
+			
+		}
+		return;
+	});
+	
 });

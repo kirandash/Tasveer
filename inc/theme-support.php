@@ -21,4 +21,16 @@ if( !empty( $post_formats ) ) {
 	add_theme_support( 'post-formats', $output );
 }
 
+$customHeader = get_option('custom_header');
+
+if( $customHeader == 1 ) {
+	add_theme_support('custom-header');
+}
+
+$customBackground = get_option('custom_background');
+
+if( $customBackground == 1 ) {
+	add_theme_support('custom-background');
+}
+
 ?>

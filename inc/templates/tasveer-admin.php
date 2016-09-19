@@ -25,6 +25,7 @@ $profilePicture = esc_attr( get_option('profile_picture') );
 	do_settings_sections( 'tasveer-theme-options' ); 
 	// settings_fields( $option_group );
 	settings_fields( 'tasveer-theme-settings-group' );
-	submit_button();
+	// submit_button( $text, $type, $name, $wrap, $other_attributes )
+	submit_button( 'Save changes',  'primary', 'btnSubmit' );
 	?>
 </form>

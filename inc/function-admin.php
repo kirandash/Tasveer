@@ -64,11 +64,17 @@ function tasveer_custom_settings() {
 	 register_setting( 'tasveer-theme-settings-group', 'tumblr_username', 'tasveer_sanitize_inputs' );
 	 
 	 // Theme Support Settings
+	 // add_settings_section( $id, $title, $callback, $page );
 	 add_settings_section( 'tasveer-theme-support-section', 'Theme Support Options', 'tasveer_theme_support_section', 'tasveer-theme-support' );
-	 
+	 // add_settings_field( $id, $title, $callback, $page, $section, $args );
 	 add_settings_field( 'post-formats', 'Post Formats', 'tasveer_post_formats', 'tasveer-theme-support', 'tasveer-theme-support-section' );
+	 add_settings_field( 'custom-header', 'Custom Header', 'tasveer_custom_header', 'tasveer-theme-support', 'tasveer-theme-support-section' );
+	 add_settings_field( 'custom-background', 'Custom Background', 'tasveer_custom_background', 'tasveer-theme-support', 'tasveer-theme-support-section' );
 	 
+	 // register_setting( $option_group, $option_name, $sanitize_callback );
 	 register_setting( 'tasveer-theme-support-group', 'post_formats', 'tasveer_post_formats_sanitize' );
+	 register_setting( 'tasveer-theme-support-group', 'custom_header' );
+	 register_setting( 'tasveer-theme-support-group', 'custom_background' );
 }
 
 // Theme Support Functions
@@ -92,6 +98,19 @@ function tasveer_post_formats() {
 	echo $output;
 }
 
+function tasveer_custom_header() {
+	$customHeader = get_option('custom_header');
+	$checked = $customHeader == 1 ? 'checked' : '';
+	echo '<label><input type="checkbox" name="custom_header" value="1" '.$checked.'>Activate the Custom Header</label>';
+}
+
+function tasveer_custom_background() {
+	$customBackground = get_option('custom_background');
+	$checked = $customBackground == 1 ? 'checked' : '';
+	echo '<label><input type="checkbox" name="custom_background" value="1" '.$checked.'>Activate the Custom Background</label>';
+}
+
+
 // Sidebar Functions
 function tasveer_sidebar_options() {
 	echo 'Customize your sidebar information.';
@@ -100,7 +119,12 @@ function tasveer_sidebar_options() {
 function tasveer_profile_picture() {
 	$profilePicture = esc_attr( get_option('profile_picture') );
 	
-	echo '<input type="button" id="upload-button" value="Upload Profile Picture" class="button button-secondary"><input type="hidden" name="profile_picture" id="profile-picture" value="'.$profilePicture.'">';
+	if( empty($profilePicture) ) {
+		echo '<input type="button" id="upload-button" value="Upload Profile Picture" class="button button-secondary"><input type="hidden" name="profile_picture" id="profile-picture" value="'.$profilePicture.'">';		
+	}else{
+		echo '<input type="button" id="upload-button" value="Upload Profile Picture" class="button button-secondary"><input type="hidden" name="profile_picture" id="profile-picture" value="'.$profilePicture.'"> <input type="button" id="remove-picture" value="Remove" class="button button-secondary">';
+	}
+
 }
 
 function tasveer_sidebar_name() {
