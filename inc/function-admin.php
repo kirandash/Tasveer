@@ -19,6 +19,7 @@ function tasveer_add_admin_page() {
 	/*add_submenu_page( string $parent_slug, string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = '' )*/
 	add_submenu_page( 'tasveer-theme-options', 'Tasveer Sidebar Options', 'Tasveer Sidebar', 'manage_options', 'tasveer-theme-options', 'tasveer_create_page' );
 	add_submenu_page( 'tasveer-theme-options', 'Tasveer Theme Support', 'Theme Support', 'manage_options', 'tasveer-theme-support', 'tasveer_theme_support_page' );
+	add_submenu_page( 'tasveer-theme-options', 'Tasveer Contact Form', 'Contact Form', 'manage_options', 'tasveer-contact-form', 'tasveer_contact_form_page' );
 	add_submenu_page( 'tasveer-theme-options', 'Tasveer Custom CSS', 'Tasveer CSS', 'manage_options', 'tasveer-theme-css', 'tasveer_css_page' );
 	
 	// Activate custom settings
@@ -66,6 +67,7 @@ function tasveer_custom_settings() {
 	 // Theme Support Settings
 	 // add_settings_section( $id, $title, $callback, $page );
 	 add_settings_section( 'tasveer-theme-support-section', 'Theme Support Options', 'tasveer_theme_support_section', 'tasveer-theme-support' );
+	 
 	 // add_settings_field( $id, $title, $callback, $page, $section, $args );
 	 add_settings_field( 'post-formats', 'Post Formats', 'tasveer_post_formats', 'tasveer-theme-support', 'tasveer-theme-support-section' );
 	 add_settings_field( 'custom-header', 'Custom Header', 'tasveer_custom_header', 'tasveer-theme-support', 'tasveer-theme-support-section' );
@@ -75,6 +77,27 @@ function tasveer_custom_settings() {
 	 register_setting( 'tasveer-theme-support-group', 'post_formats', 'tasveer_post_formats_sanitize' );
 	 register_setting( 'tasveer-theme-support-group', 'custom_header' );
 	 register_setting( 'tasveer-theme-support-group', 'custom_background' );
+	 
+	 // Contact Form Settings
+	 // add_settings_section( $id, $title, $callback, $page );
+	 add_settings_section( 'tasveer-contact-form-section', 'Theme Contact Form', 'tasveer_contact_form_section', 'tasveer-contact-form' );
+	 
+	 // add_settings_field( $id, $title, $callback, $page, $section, $args );
+	 add_settings_field( 'activate-form', 'Activate Contact Form', 'tasveer_activate_form', 'tasveer-contact-form', 'tasveer-contact-form-section' );
+	 
+	 // register_setting( $option_group, $option_name, $sanitize_callback );
+	 register_setting( 'tasveer-contact-form-group', 'activate_contact' );
+}
+
+// Contact Form Functions
+function tasveer_contact_form_section() {
+	echo 'Activate and Deactivate the built in Contact Form';	
+}
+
+function tasveer_activate_form() {
+	$activateForm = esc_attr( get_option('activate_contact') );
+	$checked = $activateForm == 1 ? 'checked' : '';
+	echo '<input type="checkbox" name="activate_contact" value="1" '.$checked.'>';
 }
 
 // Theme Support Functions
@@ -219,6 +242,10 @@ function tasveer_create_page() {
 
 function tasveer_theme_support_page() {
 	require_once( get_template_directory() . '/inc/templates/tasveer-theme-support.php' );
+}
+
+function tasveer_contact_form_page() {
+	require_once( get_template_directory() . '/inc/templates/tasveer-contact-form.php' );
 }
 
 function tasveer_css_page() {
