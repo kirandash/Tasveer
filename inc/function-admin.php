@@ -87,6 +87,26 @@ function tasveer_custom_settings() {
 	 
 	 // register_setting( $option_group, $option_name, $sanitize_callback );
 	 register_setting( 'tasveer-contact-form-group', 'activate_contact' );
+	 
+	 // Custom CSS Settings
+	 // add_settings_section( $id, $title, $callback, $page );
+	 add_settings_section( 'tasveer-custom-css-section', 'Theme Custom CSS', 'tasveer_custom_css_section', 'tasveer-theme-css' );
+	 
+	 // add_settings_field( $id, $title, $callback, $page, $section, $args );
+	 add_settings_field( 'custom-css', 'Insert your custom CSS', 'tasveer_custom_css', 'tasveer-theme-css', 'tasveer-custom-css-section' );
+	 
+	 // register_setting( $option_group, $option_name, $sanitize_callback );
+	 register_setting( 'tasveer-custom-css-group', 'custom_css' );
+}
+
+// Custom CSS Functions
+function tasveer_custom_css_section() {
+	echo 'Customize Tasveer Theme with your own CSS';	
+}
+
+function tasveer_custom_css() {
+	$customCss = esc_attr( get_option('custom_css') );
+	echo '<div id="customCss">'.$customCss.'</div><textarea style="display:none;" name="custom_css" id="custom_css">'.$customCss.'</textarea>';
 }
 
 // Contact Form Functions
@@ -250,7 +270,7 @@ function tasveer_contact_form_page() {
 
 function tasveer_css_page() {
 	// Genration of our admin page
-	echo '<h1>Tasveer Custom CSS</h1>';
+	require_once( get_template_directory() . '/inc/templates/tasveer-custom-css.php' );
 }
 
 ?>
