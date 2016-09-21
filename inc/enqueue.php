@@ -29,4 +29,20 @@ function tasveer_load_admin_scripts( $hook ) {
 }
 add_action('admin_enqueue_scripts', 'tasveer_load_admin_scripts');
 
+/*
+	==============================
+		FRONT-END ENQUEUE FUNCTIONS
+	==============================
+*/
+
+function tasveer_load_scripts() {
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '1.0.0', 'all' );
+	wp_enqueue_style( 'tasveer', get_template_directory_uri() . '/css/tasveer.css', array(), '1.0.0', 'all' );
+	
+	wp_deregister_script( 'jquery' );
+	wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery.min.js', false, '1.11.3', true  );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '3.3.7', true );
+}
+
+add_action( 'wp_enqueue_scripts', 'tasveer_load_scripts' );
 ?>
