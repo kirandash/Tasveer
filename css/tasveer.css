@@ -1,2 +1,505 @@
-/* CSS Document */
+/*
+@package tasveer
+*/
 
+/*
+	Font icon
+	-----------------------------------------
+*/
+@font-face {
+  font-family: 'tasveer-icon';
+  src:  url('../fonts/tasveer-icon.eot?j283mu');
+  src:  url('../fonts/tasveer-icon.eot?j283mu#iefix') format('embedded-opentype'),
+    url('../fonts/tasveer-icon.ttf?j283mu') format('truetype'),
+    url('../fonts/tasveer-icon.woff?j283mu') format('woff'),
+    url('../fonts/tasveer-icon.svg?j283mu#tasveer-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.tasveer-icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'tasveer-icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.tasveer-type:before {
+  content: "\e900";
+}
+.tasveer-box:before {
+  content: "\e901";
+}
+.tasveer-archive:before {
+  content: "\e902";
+}
+.tasveer-envelope:before {
+  content: "\e903";
+}
+.tasveer-email:before {
+  content: "\e904";
+}
+.tasveer-files:before {
+  content: "\e905";
+}
+.tasveer-uniE906:before {
+  content: "\e906";
+}
+.tasveer-file-settings:before {
+  content: "\e907";
+}
+.tasveer-file-add:before {
+  content: "\e908";
+}
+.tasveer-file:before {
+  content: "\e909";
+}
+.tasveer-align-left:before {
+  content: "\e90a";
+}
+.tasveer-align-right:before {
+  content: "\e90b";
+}
+.tasveer-align-center:before {
+  content: "\e90c";
+}
+.tasveer-align-justify:before {
+  content: "\e90d";
+}
+.tasveer-file-broken:before {
+  content: "\e90e";
+}
+.tasveer-browser:before {
+  content: "\e90f";
+}
+.tasveer-windows:before {
+  content: "\e910";
+}
+.tasveer-window:before {
+  content: "\e911";
+}
+.tasveer-folder:before {
+  content: "\e912";
+}
+.tasveer-folder-add:before {
+  content: "\e913";
+}
+.tasveer-folder-settings:before {
+  content: "\e914";
+}
+.tasveer-folder-check:before {
+  content: "\e915";
+}
+.tasveer-wifi-low:before {
+  content: "\e916";
+}
+.tasveer-wifi-mid:before {
+  content: "\e917";
+}
+.tasveer-wifi-full:before {
+  content: "\e918";
+}
+.tasveer-connection-empty:before {
+  content: "\e919";
+}
+.tasveer-connection-25:before {
+  content: "\e91a";
+}
+.tasveer-connection-50:before {
+  content: "\e91b";
+}
+.tasveer-connection-75:before {
+  content: "\e91c";
+}
+.tasveer-connection-full:before {
+  content: "\e91d";
+}
+.tasveer-list:before {
+  content: "\e91e";
+}
+.tasveer-grid:before {
+  content: "\e91f";
+}
+.tasveer-uniE920:before {
+  content: "\e920";
+}
+.tasveer-battery-charging:before {
+  content: "\e921";
+}
+.tasveer-battery-empty:before {
+  content: "\e922";
+}
+.tasveer-battery-25:before {
+  content: "\e923";
+}
+.tasveer-battery-50:before {
+  content: "\e924";
+}
+.tasveer-battery-75:before {
+  content: "\e925";
+}
+.tasveer-battery-full:before {
+  content: "\e926";
+}
+.tasveer-settings:before {
+  content: "\e927";
+}
+.tasveer-arrow-left:before {
+  content: "\e928";
+}
+.tasveer-arrow-up:before {
+  content: "\e929";
+}
+.tasveer-arrow-down:before {
+  content: "\e92a";
+}
+.tasveer-arrow-right:before {
+  content: "\e92b";
+}
+.tasveer-reload:before {
+  content: "\e92c";
+}
+.tasveer-refresh:before {
+  content: "\e92d";
+}
+.tasveer-volume:before {
+  content: "\e92e";
+}
+.tasveer-volume-increase:before {
+  content: "\e92f";
+}
+.tasveer-volume-decrease:before {
+  content: "\e930";
+}
+.tasveer-mute:before {
+  content: "\e931";
+}
+.tasveer-microphone:before {
+  content: "\e932";
+}
+.tasveer-microphone-off:before {
+  content: "\e933";
+}
+.tasveer-book:before {
+  content: "\e934";
+}
+.tasveer-checkmark:before {
+  content: "\e935";
+}
+.tasveer-checkbox-checked:before {
+  content: "\e936";
+}
+.tasveer-checkbox:before {
+  content: "\e937";
+}
+.tasveer-paperclip:before {
+  content: "\e938";
+}
+.tasveer-download:before {
+  content: "\e939";
+}
+.tasveer-tag:before {
+  content: "\e93a";
+}
+.tasveer-trashcan:before {
+  content: "\e93b";
+}
+.tasveer-search:before {
+  content: "\e93c";
+}
+.tasveer-zoomin:before {
+  content: "\e93d";
+}
+.tasveer-zoomout:before {
+  content: "\e93e";
+}
+.tasveer-chat:before {
+  content: "\e93f";
+}
+.tasveer-chat-1:before {
+  content: "\e940";
+}
+.tasveer-chat-2:before {
+  content: "\e941";
+}
+.tasveer-chat-3:before {
+  content: "\e942";
+}
+.tasveer-comment:before {
+  content: "\e943";
+}
+.tasveer-calendar:before {
+  content: "\e944";
+}
+.tasveer-bookmark:before {
+  content: "\e945";
+}
+.tasveer-email2:before {
+  content: "\e946";
+}
+.tasveer-heart:before {
+  content: "\e947";
+}
+.tasveer-enter:before {
+  content: "\e948";
+}
+.tasveer-cloud:before {
+  content: "\e949";
+}
+.tasveer-book2:before {
+  content: "\e94a";
+}
+.tasveer-star:before {
+  content: "\e94b";
+}
+.tasveer-clock:before {
+  content: "\e94c";
+}
+.tasveer-printer:before {
+  content: "\e94d";
+}
+.tasveer-home:before {
+  content: "\e94e";
+}
+.tasveer-flag:before {
+  content: "\e94f";
+}
+.tasveer-meter:before {
+  content: "\e950";
+}
+.tasveer-switch:before {
+  content: "\e951";
+}
+.tasveer-forbidden:before {
+  content: "\e952";
+}
+.tasveer-lock:before {
+  content: "\e953";
+}
+.tasveer-unlocked:before {
+  content: "\e954";
+}
+.tasveer-unlocked2:before {
+  content: "\e955";
+}
+.tasveer-users:before {
+  content: "\e956";
+}
+.tasveer-user:before {
+  content: "\e957";
+}
+.tasveer-users2:before {
+  content: "\e958";
+}
+.tasveer-user2:before {
+  content: "\e959";
+}
+.tasveer-bullhorn:before {
+  content: "\e95a";
+}
+.tasveer-share:before {
+  content: "\e95b";
+}
+.tasveer-screen:before {
+  content: "\e95c";
+}
+.tasveer-phone:before {
+  content: "\e95d";
+}
+.tasveer-phone-portrait:before {
+  content: "\e95e";
+}
+.tasveer-phone-landscape:before {
+  content: "\e95f";
+}
+.tasveer-tablet:before {
+  content: "\e960";
+}
+.tasveer-tablet-landscape:before {
+  content: "\e961";
+}
+.tasveer-laptop:before {
+  content: "\e962";
+}
+.tasveer-camera:before {
+  content: "\e963";
+}
+.tasveer-microwaveoven:before {
+  content: "\e964";
+}
+.tasveer-creditcards:before {
+  content: "\e965";
+}
+.tasveer-calculator:before {
+  content: "\e966";
+}
+.tasveer-bag:before {
+  content: "\e967";
+}
+.tasveer-diamond:before {
+  content: "\e968";
+}
+.tasveer-drink:before {
+  content: "\e969";
+}
+.tasveer-shorts:before {
+  content: "\e96a";
+}
+.tasveer-vcard:before {
+  content: "\e96b";
+}
+.tasveer-sun:before {
+  content: "\e96c";
+}
+.tasveer-bill:before {
+  content: "\e96d";
+}
+.tasveer-coffee:before {
+  content: "\e96e";
+}
+.tasveer-uniE96F:before {
+  content: "\e96f";
+}
+.tasveer-newspaper:before {
+  content: "\e970";
+}
+.tasveer-stack:before {
+  content: "\e971";
+}
+.tasveer-mapmarker:before {
+  content: "\e972";
+}
+.tasveer-map:before {
+  content: "\e973";
+}
+.tasveer-support:before {
+  content: "\e974";
+}
+.tasveer-uniE975:before {
+  content: "\e975";
+}
+.tasveer-barbell:before {
+  content: "\e976";
+}
+.tasveer-stopwatch:before {
+  content: "\e977";
+}
+.tasveer-atom:before {
+  content: "\e978";
+}
+.tasveer-syringe:before {
+  content: "\e979";
+}
+.tasveer-health:before {
+  content: "\e97a";
+}
+.tasveer-bolt:before {
+  content: "\e97b";
+}
+.tasveer-pill:before {
+  content: "\e97c";
+}
+.tasveer-bones:before {
+  content: "\e97d";
+}
+.tasveer-lab:before {
+  content: "\e97e";
+}
+.tasveer-clipboard:before {
+  content: "\e97f";
+}
+.tasveer-mug:before {
+  content: "\e980";
+}
+.tasveer-bucket:before {
+  content: "\e981";
+}
+.tasveer-select:before {
+  content: "\e982";
+}
+.tasveer-graph:before {
+  content: "\e983";
+}
+.tasveer-crop:before {
+  content: "\e984";
+}
+.tasveer-image:before {
+  content: "\e985";
+}
+.tasveer-cube:before {
+  content: "\e986";
+}
+.tasveer-bars:before {
+  content: "\e987";
+}
+.tasveer-chart:before {
+  content: "\e988";
+}
+.tasveer-pencil:before {
+  content: "\e989";
+}
+.tasveer-measure:before {
+  content: "\e98a";
+}
+.tasveer-eyedropper:before {
+  content: "\e98b";
+}
+
+/*
+	Generic
+	-----------------------------------------
+*/
+body {
+	font-family: 'Raleway', 'Helvetica Neue', 'Helvetica', Arial, Verdana, sans-serif;
+}
+
+.background-image {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.table {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+.table-cell {
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+	height: 100%;
+}
+
+/*
+	Header
+	-----------------------------------------
+*/
+
+.header-container {
+	position: relative;
+	display: block;
+	height: 326px;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.site-title {
+	color: #fff;
+	margin: 0;
+	font-size: 100px;
+}
+
+.site-description {
+	font-size: 14px;
+	color: #fff;
+	margin-top: 1em;
+}
